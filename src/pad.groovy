@@ -1,0 +1,1 @@
+print "112".padLeft(4, '0')
