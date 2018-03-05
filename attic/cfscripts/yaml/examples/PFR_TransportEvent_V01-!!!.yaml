@@ -1,0 +1,53 @@
+
+message_type: TransportEvent
+monitoring_point: REQUEST_INTERNAL
+attributes: 
+  # aktueller Ort
+  "AKTUELLER_ORT" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='NotificationLocation']/*[local-name()='CurrentLocation']/*[local-name()='CurrentUICRailAuthorityNumber']"
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='NotificationLocation']/*[local-name()='CurrentLocation']/*[local-name()='CurrentNetworkLocationNumber']"
+  # Fahrt
+  "FAHRT" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='Trip']/*[local-name()='TripNumber']"
+  #!!! # kapazitäts-relevant
+  #!!! 		//sAttributeName = "KAPAZITAETS_RELEVANT" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='TransportEventHeader']/*[local-name()='NotificationFunctionalClassification']/*[local-name()='CapacityRelevant']"
+  #!!! 		//
+  #!!! 		String sKapazitaetsRelevant = getFA(sXPathes);
+  #!!! 		
+  #!!! # Fahrplan-relevant
+  #!!! 		//sAttributeName = "FAHRPLAN_RELEVANT" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='TransportEventHeader']/*[local-name()='NotificationFunctionalClassification']/*[local-name()='TimetableRelevant']"
+  #!!! 		//
+  #!!! 		String sFahrplanRelevant = getFA(sXPathes);
+  #!!! 		
+  #!!! # Auftrags-Relevant
+  #!!! 		//sAttributeName = "AUFTRAGS_RELEVANT" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='TransportEventHeader']/*[local-name()='NotificationFunctionalClassification']/*[local-name()='OrderRelevant']"
+  #!!! 		//
+  #!!! 		String sAuftragsRelevant = getFA(sXPathes);
+  #!!! 		
+  #!!! 		String sFAValue = "";
+  #!!! 		
+  #!!! 		if (sFahrplanRelevant == "true") {
+  #!!! 			sFAValue = "IPL-FPL";
+  #!!! 		}
+  #!!! 		if (sAuftragsRelevant == "true") {
+  #!!! 			if (sFAValue != "") {
+  #!!! 				sFAValue += " | ";
+  #!!! 			}
+  #!!! 			sFAValue += "EOM";
+  #!!! 		}
+  #!!! 		if (sKapazitaetsRelevant == "true") {
+  #!!! 			if (sFAValue != "") {
+  #!!! 				sFAValue += " | ";
+  #!!! 			}
+  #!!! 			sFAValue += "IPL-KAPA";
+  #!!! 		}
+  #!!! 		setFA("ENDGUELTIGE_EMPFAENGER", sFAValue);			  
+  # NACHRICHTENART
+  "NACHRICHTENART" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='TransportEventHeader']/*[local-name()='NotificationType']"
+  # Verarbeitungszeitpunkt
+  "PARTNERSENDEDATUM" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='ProvideTransportEventMessage']/*[local-name()='Body']/*[local-name()='TransportEvent']/*[local-name()='TransportEventHeader']/*[local-name()='ProcessingTime']"

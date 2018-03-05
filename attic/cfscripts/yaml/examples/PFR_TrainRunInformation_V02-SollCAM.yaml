@@ -1,0 +1,8 @@
+
+message_type: TrainRunInformation
+monitoring_point: REQUEST_INTERNAL
+attributes:
+  "NACHRICHTENART" : 
+     - "SollCAM"
+  "REPORTING_IM" : 
+     - "/*[local-name()='Envelope']/*[local-name()='Body']/*[local-name()='CreateMonitoringEventRequest']/*[local-name()='MonitoringEvent']/*[local-name()='Message']/*[local-name()='send']/*[local-name()='Nachricht']/*[local-name()='SollCAM']/*[local-name()='ReportingIM']"
